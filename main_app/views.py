@@ -4,10 +4,14 @@ from .models import Car, Company, Contact
 from .forms import CarForm, CompanyForm, ContactForm
 
 #cbv imports
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 
 # Create your views here.
+
+class HomepageView(View):
+    def get(self, request):
+        return render(request, 'home.html')
 
 #CRUD for company
 class CompanyListView(ListView):
