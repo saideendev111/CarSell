@@ -85,6 +85,12 @@ class ContactCreateView(CreateView):
     template_name = 'contact/contact_form.html'
     success_url = reverse_lazy('contact_list.html')
 
+class ContactUpdateView(UpdateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'contact/contact_form.html'
+    success_url = reverse_lazy('contact_list.html')
+
 class ContactDeleteView(DeleteView):
     model = Contact
     success_url =  reverse_lazy('contact_list.html')
