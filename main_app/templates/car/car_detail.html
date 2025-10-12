@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}<title>Car Details</title>{% endblock head %}
+
+{% block content %}
+<h1>Car Details</h1>
+
+<p>{{car.car_model}}</p>
+<p>{{car.year}}</p>
+
+<a href="{% url 'car_update' car.pk %}">Edit Car</a>
+
+<form action="{% url 'car_delete' car.pk %}" method="post">
+    {% csrf_token %}
+    <button>Delete Car</button>
+</form>
+{% endblock content %}

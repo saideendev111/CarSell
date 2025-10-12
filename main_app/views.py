@@ -23,6 +23,7 @@ class CompanyDetailView(DetailView):
     model = Company
     template_name = 'company/company_detail.html'
     context_object_name = 'company'
+    pk_url_kwarg = 'id'
 
 class CompanyCreateView(CreateView):
     model = Company
@@ -50,7 +51,7 @@ class CarDetailView(DetailView):
     model = Car
     template_name = 'car/car_detail.html'
     context_object_name = 'car'
-    pk_url_kwarg = 'id'
+    pk_url_kwarg = 'pk'
 
 class CarCreateView(CreateView):
     model = Car
@@ -77,20 +78,21 @@ class ContactListView(ListView):
 class ContactDetailView(DetailView):
     model = Contact
     template_name = 'contact/contact_detail.html'
-    context_object_name = 'contacts'
+    context_object_name = 'contact'
+    pk_url_kwarg = 'pk'
 
 class ContactCreateView(CreateView):
     model = Contact
     form_class = ContactForm
     template_name = 'contact/contact_form.html'
-    success_url = reverse_lazy('contact_list.html')
+    success_url = reverse_lazy('contact_list')
 
 class ContactUpdateView(UpdateView):
     model = Contact
     form_class = ContactForm
     template_name = 'contact/contact_form.html'
-    success_url = reverse_lazy('contact_list.html')
+    success_url = reverse_lazy('contact_list')
 
 class ContactDeleteView(DeleteView):
     model = Contact
-    success_url =  reverse_lazy('contact_list.html')
+    success_url =  reverse_lazy('contact_list')

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}<title>Company Details</title>{% endblock head %}
+
+{% block content %}
+<h1>{{company.company_name}}</h1>
+
+<h3>Cars from this company</h3>
+
+<ul>
+    {% for car in company.cars.all %}
+        <li>{{car.car_model}}</li>
+        {% empty %}
+        <li>No cars found for this company</li>
+    {% endfor %}
+
+    <a href="{% url 'company_update' company.pk %}">Edit Company</a>
+
+    <form action="{% url 'company_delete' company.pk %}" method="post">
+        {% csrf_token %}
+        <button>Delete Company</button>
+    </form>
+</ul>
+{% endblock content %}

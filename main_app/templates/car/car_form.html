@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}<title>Car Form</title>{% endblock head %}
+
+{% block content %}
+<h1>Add a new car</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        {{field.label_tag}}
+        {{field}}
+        {% for error in field.errors %}
+            <div class="field-error">{{error}}</div>
+        {% endfor %}
+    {% endfor %}
+    <button type="submit">Create</button>
+</form>
+{% endblock content %}

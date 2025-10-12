@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}<title>Contact Details</title>{% endblock head %}
+
+{% block content %}
+<h1>{{contact.contact_name}}</h1>
+<h1>{{contact.phone_num}}</h1>
+
+<a href="{% url 'contact_update' contact.pk %}">Edit</a>
+<form action="{% url 'contact_delete' contact.pk %}" method="post">
+    {% csrf_token %}
+    <button>Delete Contact</button>
+</form>
+{% endblock content %}
