@@ -1,0 +1,17 @@
+from django import forms
+from .models import Car, Company, Contact
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = ['company_name']
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = ['car_model', 'car_type', 'year', 'price', 'company', 'contact']
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'phone_num']
