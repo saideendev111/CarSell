@@ -9,7 +9,7 @@ class CompanyForm(forms.ModelForm):
 class CarForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = ['car_model', 'car_type', 'year', 'price', 'company', 'contact']
+        fields = ['car_model', 'company','car_type', 'year', 'price', 'description','contact']
 
 class ContactForm(forms.ModelForm):
     class Meta:

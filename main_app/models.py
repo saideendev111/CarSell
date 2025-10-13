@@ -11,8 +11,8 @@ class Company(models.Model):
 
 class Contact(models.Model):
     contact_id = models.BigAutoField(primary_key=True)
-    contact_name = models.CharField(max_length=100, null=False)
-    phone_num = models.IntegerField(null=False)
+    contact_name = models.CharField(max_length=100, null=True)
+    phone_num = models.CharField(max_length=13,null=True)
 
     def __str__(self):
         return self.contact_name
@@ -30,6 +30,7 @@ class Car(models.Model):
     car_type = models.CharField(max_length=30, choices=CAR_TYPES)
     year = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.CharField(max_length=255, null=True, blank=True)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, related_name='cars', null=True)
     contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, related_name='cars', null=True)
 
