@@ -2,44 +2,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-
-    {% block head %}{% endblock head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Website</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block head %}{% endblock head %}
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="/">Home Page</a>
+  <header class="navbar">
+    <!-- Left side of navbar -->
+    
+      <a href="/">Home Page</a>
 
-        <div class="dropdown">
-            <span class="dropbtn">Company</span>
-            <div class="dropdown-content">
-                <a href="{% url 'company_list' %}">Companies list</a>
-                <a href="{% url 'company_form' %}">Add Company</a>
-            </div>
+      <div class="dropdown">
+        <span class="dropbtn">Company</span>
+        <div class="dropdown-content">
+          <a href="{% url 'company_list' %}">Companies List</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'company_form' %}">Add Company</a>
+          {% endif %}
         </div>
+      </div>
 
-        <div class="dropdown">
-            <span class="dropbtn">Car</span>
-            <div class="dropdown-content">
-                <a href="{% url 'car_list' %}">Cars List</a>
-                <a href="{% url 'car_form' %}">Add Car</a>
-            </div>
+      <div class="dropdown">
+        <span class="dropbtn">Car</span>
+        <div class="dropdown-content">
+          <a href="{% url 'car_list' %}">Cars List</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'car_form' %}">Add Car</a>
+          {% endif %}
         </div>
+      </div>
 
-        <div class="dropdown">
-            <span class="dropbtn">Contact info</span>
-            <div class="dropdown-content">
-                <a href="{% url 'contact_list' %}">Contacts List</a>
-                <a href="{% url 'contact_form' %}">Add Contact</a>
-            </div>
+      <div class="dropdown">
+        <span class="dropbtn">Contact Info</span>
+        <div class="dropdown-content">
+          <a href="{% url 'contact_list' %}">Contacts List</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'contact_form' %}">Add Contact</a>
+          {% endif %}
         </div>
+      </div>
+    
 
-    </header>
+    
+    
+      {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+        <span style="color: white;" class="welcome">Welcome, {{ user.username }}!</span>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+      {% endif %}
+    
+  </header>
 
-    {% block content %}{% endblock content %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}{% endblock content %}
+
 </body>
 </html>

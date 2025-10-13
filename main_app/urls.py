@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     #homepage
     path('', views.HomepageView.as_view(), name='home'),
+
+    path('auth/signup/', views.SignUpView.as_view(), name='signup'),
     
     #Company
     path('company/company_list.html', views.CompanyListView.as_view(), name='company_list'),
