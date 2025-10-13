@@ -35,14 +35,14 @@
         </div>
       </div>
 
-      <div class="dropdown">
-        <span class="dropbtn">Contact Info</span>
-        <div class="dropdown-content">
-          <a href="{% url 'contact_list' %}">Contacts List</a>
-          {% if user.is_authenticated %}
-            <a href="{% url 'contact_form' %}">Add Contact</a>
-          {% endif %}
+      {% if user.is_authenticated %}
+        <div class="dropdown">
+            <span class="dropbtn">Contact Info</span>
+            <div class="dropdown-content">
+                <a href="{% url 'contact_list' %}">Contacts List</a>
+                <a href="{% url 'contact_form' %}">Add Contact</a>
         </div>
+       {% endif %} 
       </div>
     
 
