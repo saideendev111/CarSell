@@ -8,10 +8,12 @@
 <p>{{car.car_model}}</p>
 <p>{{car.year}}</p>
 
-<a href="{% url 'car_update' car.pk %}">Edit Car</a>
+{% if user.is_authenticated %}
+    <a href="{% url 'car_update' car.pk %}">Edit Car</a>
 
-<form action="{% url 'car_delete' car.pk %}" method="post">
-    {% csrf_token %}
-    <button>Delete Car</button>
-</form>
+    <form action="{% url 'car_delete' car.pk %}" method="post">
+        {% csrf_token %}
+        <button>Delete Car</button>
+    </form>
+{% endif %}
 {% endblock content %}
