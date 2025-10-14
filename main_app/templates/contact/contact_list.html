@@ -4,9 +4,9 @@
 
 {% block content %}
 <h1>Contacts:</h1>
-<div class="contact-list">
+<div class="item-list">
     {% for contact in contacts %}
-        <div class="contact-card">
+        <div class="item-card">
             <a href="{% url 'contact_detail' contact.pk %}">{{contact.contact_name}}</a>
         </div>
     {% endfor %}

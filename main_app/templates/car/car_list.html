@@ -5,9 +5,9 @@
 {% block content %}
 <h1>All Cars</h1>
 
-<div class="car-list">
+<div class="item-list">
     {% for car in cars %}
-        <div class="car-card">
+        <div class="item-card">
             <a href="{% url 'car_detail' car.pk %}" class="car-title">
                 {{ car.company }} {{ car.car_model }}
             </a>

@@ -39,13 +39,13 @@
     text-decoration: none;
 }
 
-.car-list {
+.item-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.car-card {
+.item-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,13 +55,13 @@
     border-radius: 5px;
 }
 
-.car-card a {
+.item-card a {
     text-decoration: none;
     font-weight: bold;
     color: black;
 }
 
-.car-card a:hover {
+.item-card a:hover {
     color: gray;
 }
 
@@ -109,7 +109,7 @@
     justify-content: center;
 }
 
-.contact-list {
+/*.contact-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
