@@ -1,6 +1,6 @@
 # Car Resale Project
-Date: 10/14/2025  
-Author: Mohammad Alsaideen
+**Date:** 10/14/2025  
+**Author:** Mohammad Alsaideen
 
 ---
 
@@ -55,5 +55,5 @@ Learned how to build web applications using the Django framework and the Model-V
 ---
 
 # Author
-**Name**: Mohammad Alsaideen  
-**GitHub**: saideendev111
+**Name:** Mohammad Alsaideen  
+**GitHub:** saideendev111
