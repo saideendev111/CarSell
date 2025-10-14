@@ -11,4 +11,27 @@
             <h1>Welcome to CarSell!</h1>
         </div>
     </div>
+
+    <div style="text-align:center">
+        <h2>About CarSell</h2>
+        <p>CarSell is your trusted platform to browse, buy, and sell cars easily!</p>
+    </div>
+
+    <div class="actions">
+        <form action="{% url 'car_list' %}">
+            {% csrf_token %}
+            <button>Explore Cars</button>
+        </form>
+        {% if user.is_authenticated %}
+            <form action="{% url 'car_form' %}">
+                {% csrf_token %}
+                <button>Add Car For Sale</button>
+            </form>
+        {% else %}
+            <form action="{% url 'login' %}">
+                {% csrf_token %}
+                <button>login</button>
+            </form>
+        {% endif %}
+    </div>
 {% endblock content %}
