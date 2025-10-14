@@ -4,10 +4,11 @@
 
 {% block content %}
 <h1>Contacts:</h1>
-
-{% for contact in contacts %}
-    <ol>
-        <li><a href="{% url 'contact_detail' contact.pk %}">{{contact.contact_name}}</a></li>
-    </ol>
-{% endfor %}
+<div class="contact-list">
+    {% for contact in contacts %}
+        <div class="contact-card">
+            <a href="{% url 'contact_detail' contact.pk %}">{{contact.contact_name}}</a>
+        </div>
+    {% endfor %}
+</div>
 {% endblock content %}
