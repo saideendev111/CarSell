@@ -1,5 +1,5 @@
 # Car Resale Project
-Date: 10/14/2025
+Date: 10/14/2025  
 Author: Mohammad Alsaideen
 
 ---
@@ -22,13 +22,13 @@ This project is a Django-based web app for listing and managing car resale posts
 # Screenshots
 
 ## Hero Picture
-![alt text](static/images/hero.png)
+![Hero](main_app/static/images/hero.png)
 
 ## Car List Page
-![alt text](static/images/carlist.png)
+![Car List Page](main_app/static/images/carlist.png)
 
 ## Car Details
-![alt text](static/images/cardetails.png)
+![Car Details](main_app/static/images/cardetails.png)
 
 ---
 
@@ -55,5 +55,5 @@ Learned how to build web applications using the Django framework and the Model-V
 ---
 
 # Author
-Name: Mohammad Alsaideen
-GitHub: saideendev111
+**Name**: Mohammad Alsaideen  
+**GitHub**: saideendev111
