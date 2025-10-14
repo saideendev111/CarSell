@@ -81,12 +81,12 @@ class CarDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('car_list')
 
 #CRUD for contact
-class ContactListView(ListView):
+class ContactListView(LoginRequiredMixin, ListView):
     model = Contact
     template_name = 'contact/contact_list.html'
     context_object_name = 'contacts'
 
-class ContactDetailView(DetailView):
+class ContactDetailView(LoginRequiredMixin, DetailView):
     model = Contact
     template_name = 'contact/contact_detail.html'
     context_object_name = 'contact'
