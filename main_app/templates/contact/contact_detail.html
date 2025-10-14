@@ -3,12 +3,23 @@
 {% block head %}<title>Contact Details</title>{% endblock head %}
 
 {% block content %}
-<h1>{{contact.contact_name}}</h1>
-<h1>{{contact.phone_num}}</h1>
+<h1>Contact Details:</h1>
+<div class="contact-list">
+    <div class="contact-card">
+        <p><strong>Name:</strong> {{contact.contact_name}}</p>
+        <p><strong>|</strong></p>
+        <p><strong>Phone Number:</strong> {{contact.phone_num}}</p>
+    </div>
+</div>
 
-<a href="{% url 'contact_update' contact.pk %}">Edit</a>
-<form action="{% url 'contact_delete' contact.pk %}" method="post">
-    {% csrf_token %}
-    <button>Delete Contact</button>
-</form>
+<div class="actions">
+    <form action="{% url 'contact_update' contact.pk %}" method="get">
+        {% csrf_token %}
+        <button type="submit">Edit Contact</button>
+    </form>
+    <form action="{% url 'contact_delete' contact.pk %}" method="post">
+        {% csrf_token %}
+        <button>Delete Contact</button>
+    </form>
+</div>
 {% endblock content %}
