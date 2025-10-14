@@ -5,22 +5,31 @@
 {% block content %}
 <h1>{{company.company_name}}</h1>
 
-<h3>Cars from this company</h3>
+<h3>Cars from this company:</h3>
 
-<ul>
+<div class="item-list">
     {% for car in company.cars.all %}
-        <li>{{car.car_model}}</li>
-        {% empty %}
-        <li>No cars found for this company</li>
+        <div class="item-card">
+            {{car.car_model}}
+        </div>
+    {% empty %}
+        <div class="item-card">
+            No cars found for this company
+        </div>
     {% endfor %}
+</div>
 
     {% if user.is_authenticated %}
-        <a href="{% url 'company_update' company.pk %}">Edit Company</a>
+        <div class="actions">
+            <form action="{% url 'company_update' company.pk %}" method="get">
+                {% csrf_token %}
+                <button type="submit">Edit Company</button>
+            </form>
 
-        <form action="{% url 'company_delete' company.pk %}" method="post">
-            {% csrf_token %}
-            <button>Delete Company</button>
-        </form>
+            <form action="{% url 'company_delete' company.pk %}" method="post">
+                {% csrf_token %}
+                <button>Delete Company</button>
+            </form>
+        </div>
     {% endif %}
-</ul>
 {% endblock content %}
