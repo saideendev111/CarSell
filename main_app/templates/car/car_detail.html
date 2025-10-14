@@ -5,15 +5,37 @@
 {% block content %}
 <h1>Car Details</h1>
 
-<p>{{car.car_model}}</p>
-<p>{{car.year}}</p>
+<div class="details-card">
+    
+    <div class="detail-row">
+        <span class="left">Company: {{ car.company }}</span>
+        <span class="center">Model: {{ car.car_model }}</span>
+        <span class="right">Car Type: {{ car.car_type }}</span>
+    </div>
+
+    
+    <div class="detail-row">
+        <span class="left">Price: {{ car.price }}</span>
+        <span class="center">Contact: {{ car.contact.contact_name }} - {{ car.contact.phone_num }}</span>
+        <span class="right"></span>
+    </div>
+
+    
+    <div class="detail-row">
+        <span class="full">Description {{ car.description }}</span>
+    </div>
+</div>
 
 {% if user.is_authenticated %}
-    <a href="{% url 'car_update' car.pk %}">Edit Car</a>
-
-    <form action="{% url 'car_delete' car.pk %}" method="post">
-        {% csrf_token %}
-        <button>Delete Car</button>
-    </form>
-{% endif %}
+        <div class="actions">
+            <form action="{% url 'car_update' car.pk %}" method="get">
+                {% csrf_token %}
+                <button type="submit">Edit Car</button>
+            </form>
+            <form action="{% url 'car_delete' car.pk %}" method="post">
+                {% csrf_token %}
+                <button>Delete Car</button>
+            </form>
+        </div>
+    {% endif %}
 {% endblock content %}

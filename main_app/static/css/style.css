@@ -69,3 +69,42 @@
     font-style: italic;
     color: gray;
 }
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.detail-row {
+    display: flex;
+    gap: 20px; 
+}
+
+.detail-row .left {
+    flex: 2;
+    text-align: left;
+}
+
+.detail-row .center {
+    flex: 4;
+    text-align: center;
+    white-space: nowrap; 
+}
+
+.detail-row .right {
+    flex: 2;
+    text-align: right;
+}
+
+.detail-row .full {
+    flex: 1 1 100%;
+    text-align: left;
+}
+
+.actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 20px;
+    justify-content: center;
+}
