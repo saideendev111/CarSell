@@ -9,6 +9,7 @@
     background-color: black;
     border: 1px solid lightgray;
     min-width: 150px;
+    z-index: 2;
   }
 
   .dropdown-content a {
@@ -24,6 +25,8 @@
 .navbar {
     background: black;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .navbar a, .navbar .dropbtn {
