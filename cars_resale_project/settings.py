@@ -10,17 +10,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h6a-v1+(dkx#3it(6$0i%ef4f60wsw$yq5x)hj94lc2d40+%b6'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,7 +81,7 @@ WSGI_APPLICATION = 'cars_resale_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cars_store',  # Name of your PostgreSQL database
+        'NAME': os.getenv('cars_store'),  # Name of your PostgreSQL database
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost',  
@@ -120,7 +125,41 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+import os
+import dj_database_url
+from pathlib import Path
+STATIC_URL = '/static/'
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
+
+
+MIDDLEWARE+= 'whitenoise.middleware.WhiteNoiseMiddleware',
+ALLOWED_HOSTS += ['.onrender.com','localhost','127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+
+
+
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=not DEBUG
+        )
+    }
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),  # same name as your .env file
+        'USER': 'postgres',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': 'localhost',  
+        'PORT': '5432',
+    }
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
