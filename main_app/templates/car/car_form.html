@@ -1,19 +1,25 @@
 {% extends "base.html" %}
-
-{% block head %}<title>Car Form</title>{% endblock head %}
+{% load static %}
+{% block head %}
+<title>Car Form</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock head %}
 
 {% block content %}
 <h1>Add a new car</h1>
-
 <form method="post">
     {% csrf_token %}
     {% for field in form %}
+    <div class="car-add-form">
         {{field.label_tag}}
         {{field}}
         {% for error in field.errors %}
             <div class="field-error">{{error}}</div>
         {% endfor %}
+    </div>
     {% endfor %}
-    <button type="submit">Create</button>
+    <div class="actions">
+    <button style="margin-top=10px;" type="submit">Create</button>
+    </div>
 </form>
 {% endblock content %}
